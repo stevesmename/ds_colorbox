@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_menu.
+ *
+ * Displays a node in a colorbox.
+ */
+
+function ds_colorbox_menu() {
+  $items = array();
+
+  // Callback to render only the node text for colorbox.
+  $items['node/%node/colorbox'] = array(
+    'page callback' => 'ds_colorbox_view_node_colorbox',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+/**
+* Render node title and body for colorbox.
+*/
+function ds_colorbox_view_node_colorbox($node) {
+  $styles = drupal_get_css();
+  $output = $styles;
+  $output .= drupal_render(node_view($node, 'colorbox'));
+  print $output;
+  exit();
+}
+

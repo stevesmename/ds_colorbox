@@ -1,0 +1,3 @@
+name = DS Colorbox
+description = A glue module for Display Suite (DS) and Colorbox modules.
+core = 7.x
